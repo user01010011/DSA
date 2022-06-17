@@ -1,5 +1,7 @@
 // Write a function which takes two numbers and return their sum.
 
+const { numberToIdentifer } = require("webpack/lib/Template");
+
 // Understand The Problem 
 // 1. Can I restate the problem in my own words? 
 //     - "implement addition" or "implement adding two numbers"
@@ -88,3 +90,86 @@ function charCount(str) {
 
 charCount("Hello")
 charCount("Hi there!")
+
+
+// Could do additional research, could ask interviewer if they had suggestions
+// To tell a character is alphanumeric: 
+    // define an array containing every valid character, very massic array, that had ABCDE...all uppercase and lowercase, etc 
+    // regex (regular expression)
+    // character codes/ASCII codes
+// Then plug in existing code 
+
+// Write a function which takes in a string and returns counts of each character in the string. 
+// Look Back & Refactor 
+
+// Solution 1:  
+function charCount(str) {
+    var obj = {}; 
+    for (var i = 0; i < str.length; i++) {
+        var char = str[i].toLowerCase(); 
+        if (/[a-zO-9]/.test(char)){
+            if (obj[char] > 0) {
+                obj[char]++; 
+            } else {
+                obj[char] = 1; 
+            };
+        }
+    }
+    return obj; 
+}
+
+// Solution 2: 
+function charCount(str) {
+    var obj = {}; 
+    for (var char of str) {
+        char = char.toLowerCase(); 
+        if (/[a-z0-9]/.test(char)){
+            if (obj[char] > 0) {
+                obj[char]++; 
+            } else {
+                obj[char] = 1; 
+            };
+        }
+    }   
+    return obj;
+}
+
+// Solution 3: using regex / regexp
+function charCount(str) {
+    var obj = {}; 
+    for (var char of str) {
+        char = char.toLowerCase(); 
+        if (/[a-z0-9]/.test(char)){
+            obj[char] = ++obj[char] || 1; 
+        }
+    }
+    return obj; 
+}
+
+// If this was interview setting: 
+// I'm using a regular expression here because I know how to do that and it's a quick way, relatively short way of checking for a certain pattern in our case to see if a character is alphanumeric, a letter or a number. 
+// But i'm not sure how efficient it actually is. I've heard certain things that in JavaScript (this is true), regular expressions, the performance can vary depending on what you're doing and depending on the browser you use. 
+// (Chrome had some issues with regular expressions a while back)
+
+// Solution 4: Using charCode
+function charCount(str) {
+    var obj = {}; 
+    for (var char of str) {
+        char = char.toLowerCase(); 
+        if (isAlphaNumeric(char)) {
+            obj[char] = ++obj[char] || 1; 
+        }
+    }
+    return obj; 
+}
+
+function isAlphaNumeric(char) {
+    var code = char.charCodeAt(0); 
+    if (!(code > 47 && code < 58) && // numeric (0-9)
+        !(code > 64 && code < 91) && // upper alpha (A-Z)
+        !(code > 96 &&  code < 123)) { // lower alpha (a-z)
+            return false; 
+        }
+        return true; 
+}
+charCodeAt(0)
