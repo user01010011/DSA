@@ -45,3 +45,4 @@ function same(arr1, arr2) {
   }
   return true;
 }
+// Time Complexity: O(n)
