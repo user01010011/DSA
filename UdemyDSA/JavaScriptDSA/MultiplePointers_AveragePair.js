@@ -14,7 +14,7 @@
 // Time: O(n)
 // Space: O(1)
 
-// Solution 1: Two pointers 
+// Solution 1 - 1: Two pointers 
 
 function averagePair(arr, num) {
     let left = 0; 
@@ -26,4 +26,17 @@ function averagePair(arr, num) {
         else right--; 
     }
     return false; 
+}
+
+// Solution 1 - 2: Two Pointers 
+function averagePair(arr, num) {
+    let start = 0; 
+    let end = arr.length - 1; 
+    while (start < end) {
+        let avg = (arr[start] + arr[end]) / 2; 
+        if (avg === num) return true; 
+        else if (avg < num) start++; 
+        else end--; 
+    }
+    return false;
 }
