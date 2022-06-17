@@ -40,3 +40,51 @@ function validAnagram(str1, str2) {
   }
   return true;
 }
+
+// Solution 2:
+function validAnagram(first, second) {
+  if (first.length !== second.length) {
+    return false;
+  }
+  // create an object (that is a break down of the first string)
+  const lookup = {};
+  for (let i = 0; i < first.length; i++) {
+    let letter = first[i];
+    // if letter exists, increment, otherwise set to 1
+    lookup[letter] ? (lookup[letter] += 1) : (lookup[letter] = 1);
+  }
+  for (let i = 0; i < second.length; i++) {
+    let letter = second[i];
+    // can't find letter or letter is zero, then it's not an anagram
+    if (!lookup[letter]) {
+      return false;
+    } else {
+      lookup[letter] -= 1;
+    }
+  }
+  return true;
+}
+validAnagram("anagram", "nagaram");
+
+
+// Solution 2 - Update version 
+function validAnagram(str1, str2) {
+    if (str1.length !== str2.length) {
+        return false; 
+    }
+    const temp = {}; 
+    for (let i = 0; i < str1.length; i++) {
+        let letter = str1[i]; 
+        temp[letter] ? temp[letter] += 1 : temp[letter] = 1; 
+    }
+    for (let i = 0; i < str2.length; i++) {
+        if (!temp[letter]) {
+            return false;
+        } else {
+            temp[letter] -= 1;
+        }
+    }
+    return true; 
+}
+
+// Anytime you need to compare multiple pieces of data and you need to compare them
