@@ -34,4 +34,23 @@
 
 // Follow up: If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log(n)).
 
-// Solution 1: 
+// Solution 1: Sliding Window 
+function minSubArrayLen(target, nums) {
+    let i = 0; 
+    let j = 0; 
+    let sum = 0; 
+    let minLen = Infinity; 
+    while (i < nums.length) {
+        if (sum < target && j < nums.length) {
+            sum += nums[j]; 
+            j++; 
+        } else if (sum >= target) {
+            minLen = Math.min(minLen, j - i)
+            sum -= nums[i]; 
+            i++; 
+        } else {
+            break; 
+        }
+    }
+    return minLen === Infinity ? 0 : minLen
+}
