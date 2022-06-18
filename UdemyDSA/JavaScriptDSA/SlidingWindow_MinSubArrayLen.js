@@ -18,7 +18,29 @@
 // Time Complexity: O(n)
 // Space Complexity: O(1)
 
-// Solution 1: 
+// Solution 1 - 1: 
+function minSubArrayLen(arr, num) {
+    let i = 0; // start 
+    let j = 0; // end 
+    let sum = 0; 
+    let minLen = Infinity; 
+    while (i < arr.length) {
+        if (sum < num && j < arr.length) {
+            sum += arr[j]; 
+            j++; 
+        } else if (sum >= num) {
+            minLen = Math.min(minLen, j - i); 
+            sum -= arr[i]; 
+            i++; 
+        } else {
+            break; 
+        }
+    }
+    return minLen === Infinity ? 0 : minLen
+}
+
+
+// Solution 1 - 2: 
 function minSubArrayLen(nums, sum) {
     let total = 0; 
     let start = 0; 
