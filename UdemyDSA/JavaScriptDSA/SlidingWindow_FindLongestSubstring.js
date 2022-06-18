@@ -14,4 +14,22 @@
 
 // Time: O(n)
 
-// Solution 1: 
+// Solution 1: Using Hash Table
+
+function findLongestSubstring(str){
+
+    let len = 0; 
+    let i = 0; 
+    let map = {}; 
+    for (let j = 0; j < str.length; j++) {
+        let char = str[j]; 
+        if (map[char]) {
+            i = Math.max(i, map[char]); 
+        }
+            len = Math.max(len, j - i + 1); 
+            map[char] = j + 1; 
+       
+    }
+    return len; 
+  }
+  
