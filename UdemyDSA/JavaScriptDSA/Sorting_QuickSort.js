@@ -3,7 +3,7 @@
 // Quick Sort
 
 // ES2015 
-function pivot(arr, start=0, end=arr.length-1) {
+function pivot(arr, start=0, end=arr.length-1) {  // arr.length is the count of the array, arr.length is the last index of the array
     const swap = (arr, idx1, idx2)          => {
         [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]]; 
     };; 
@@ -21,17 +21,19 @@ function pivot(arr, start=0, end=arr.length-1) {
     return swapIdx; 
 }
 
-function quickSort(arr, left=0, right=arr.length-1) { // no start and end because we are going to call portions of the array
-    if (left < right){
-        let pivotIndex = pivot(arr, left, right) 
+function quickSort(arr, left=0, right=arr.length-1) { // no start and end because we are going to call portions of the array // 
+    if (left < right){ // keep running until only one element
+        // call pivot function, which returns the swapIdx
+        let pivotIndex = pivot(arr, left, right) // first time we are calling left = 0, right = arr.length - 1
         // left 
-        quickSort(arr, left, pivotIndex-1); 
+        quickSort(arr, left, pivotIndex-1); // sort the left portion right before the pivot index (where pivot is now placed after pivot function)
         // right 
-        quickSort(arr, pivotIndex+1, right); 
+        quickSort(arr, pivotIndex+1, right); // sort the right portion right after the pivot index 
     }
-    return arr; 
-
+    return arr; // break the loop 
 }
+
+quickSort([4, 6, 9, 1, 2, 5])
 
 // ES5
 function pivot(arr, start=0, end=arr.length+1) {
