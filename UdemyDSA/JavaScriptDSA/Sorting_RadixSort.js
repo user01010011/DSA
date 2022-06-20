@@ -23,3 +23,12 @@ function digitCount(num) {
 }
 digitCount(423) // get the digit count of 423
 // log10 gives us the power of the number based on base 10
+
+// Radix Sort Helper Function 3: get the digits of the largest number in the list 
+function mostDigits(nums) {
+    let maxDigits = 0; 
+    for (let i = 0; i < nums.length; i++) { // Loop through the numbers 
+        maxDigits = Math.max(maxDigits, digitCount(nums[i])); // maxDigits is 0, and then get the digits of num at i. 
+    }
+    return maxDigits; 
+}
