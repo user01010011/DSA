@@ -3,6 +3,14 @@
 // Class 
 
 // Instance Methods 
+// class DataStructure(){
+//     constructor(){
+//         // what default properties should it have? 
+//     };
+//     someInstanceMethod(){
+//         // what should each object created from this class be able to do?
+//     };
+// };
 
 class Student {
     constructor(firstName, lastName, year) {
