@@ -35,3 +35,4 @@ class Student {
 }
 let firstStudent = newStudent("Hello", "World", 1, 0); 
 firstStudent.fullName() // "Hello World"
+
