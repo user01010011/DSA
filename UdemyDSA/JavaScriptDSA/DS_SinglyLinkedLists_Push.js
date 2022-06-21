@@ -64,7 +64,18 @@ class SinglyLinkedList {
         this.head = currentHead.next; // set the head to the next node 
         this.length--; 
         return currentHead; 
-
+    }
+    unshift(val) {
+        var newNode = new Node(val); 
+        if (!this.head) { // if there is no head, or nothing in the list to start 
+            this.head = newNode; // set both the head and tail to the new node 
+            this.tail = this.head; 
+        } else { // only runs when there's at least one thing in here in the list. remember to add else {}, without this, we are setting the head and the tail to be the new node. This will set the next to null if there is only one item
+            newNode.next = this.head; // otherwise (there is head), set the new node to point to the head / list's head
+            this.head = newNode; // this moves the head to the new node 
+        }
+        this.length++; 
+        return this; 
     }
 }
 var list = new SinglyLinkedList()
