@@ -77,9 +77,22 @@ class SinglyLinkedList {
         this.length++; 
         return this; 
     }
+
+    get(index) {
+        if (index < 0 || index >= this.length) return null; 
+        var counter = 0; // keep track of 
+        var current = this.head; // keep track of our currect position as we traverse
+        while (counter !== index) { // while we have not reached the index
+            current = current.next; // current now moved to the next node / next node's head
+            count++; 
+        }
+        return current; 
+    }
 }
 var list = new SinglyLinkedList()
-// list.push("HELLO")
-// list.push("GOODBYE")
-// list.push("GOODBYE")
+list.push("MAKE") // current, counter = 0 // traverse through the linked list
+list.push("SOMETHING") // current, counter = 1
+list.push("PEOPLE") // current, counter = 2
+list.push("WANT") // current, counter = 3
+list.push("!") // current, counter = 4
 // list.pop() // call the pop function 
