@@ -127,6 +127,27 @@ class SinglyLinkedList {
         this.length++; // add to length accounting for the new node  
         return true; // insert successful 
     }
+    remove(index) {
+        if (index < 0 || index > this.length) return undefined; // or null, or false
+        if (index === 0) return this.shift(); 
+        if (index === this.length - 1) return this.pop(); 
+        var previousNode = this.get(index - 1); // we need to find/retrieve the previous node before the one we want to remove
+        var removed = previousNode.next; // this is what we are going to return at the very end 
+        previousNode.next = removed.next; // this sets the previous.next to the one after removed
+        this.length--; 
+        return removed; 
+    }
+
+    print() { // prints all the values in our linked list in order in an array (easiest to print in one line)
+        var arr = []; 
+        var current = this.head; 
+        while(current) { // while there is a current
+            arr.push(current.val)
+            current = current.next // keep going move to the next one, as long as there is a next one 
+        }
+        console.log(arr); 
+    }
+
 }
 var list = new SinglyLinkedList()
 list.push("MAKE") // current, counter = 0 // traverse through the linked list
