@@ -108,6 +108,25 @@ class SinglyLinkedList {
         this.length++; // add to length accounting for the new node  
         return true; // insert successful 
     }
+    // to make sure that .push() & .unshift() also return true or false: 
+    insert(index, val) {
+        if (index < 0 || index > this.length) return false; // 0 is ok, less than 0 is not ok. = this.length, > this.length is not ok, at the length means that we just push to the end.
+        if (index === this.length) {
+            this.push(val); 
+            return true; 
+        }
+        // or can use boolean operator !! to covert / coerce it to boolean value, give us the opposite of it.
+        // if (index === this.length) return !!this.push(val); 
+        // if (index === 0) return !!this.unshift(val); 
+        if (index === 0) return this.unshift(val); // insert at the beginning 
+        var newNode = new Node(val); 
+        var prev = this.get(index - 1) // find the item right before it
+        var temp = prev.next; // use temp variable to hold the next node after pre
+        prev.next = newNode; // assign newNode to the new next node
+        newNode.next = temp; // temp was holding the old next node, now it becomes the next node for newNode / the new node 
+        this.length++; // add to length accounting for the new node  
+        return true; // insert successful 
+    }
 }
 var list = new SinglyLinkedList()
 list.push("MAKE") // current, counter = 0 // traverse through the linked list
