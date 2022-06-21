@@ -57,6 +57,15 @@ class SinglyLinkedList {
         } 
         return current; 
     }
+
+    shift() {
+        if(!this.head) return undefined; 
+        var currentHead = this.head; // store the current head in a variable 
+        this.head = currentHead.next; // set the head to the next node 
+        this.length--; 
+        return currentHead; 
+
+    }
 }
 var list = new SinglyLinkedList()
 // list.push("HELLO")
