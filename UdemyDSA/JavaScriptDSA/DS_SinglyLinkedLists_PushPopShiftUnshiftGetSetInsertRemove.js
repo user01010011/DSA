@@ -138,6 +138,20 @@ class SinglyLinkedList {
         return removed; 
     }
 
+    reverse() {
+        var node = this.head; 
+        this.head = this.tail; 
+        this.tail = node; 
+        var next; 
+        var prev = null; // we want previous definitely to be null because we need to make sure that the end of our list, the tail.next is null. (we don't want undefined, etc.)
+        for (var i = 0; i < this.length; i++) {
+            next = node.next; 
+            node.next = prev; 
+            prev = node; 
+            node = next; 
+        }
+        return this; 
+    }
     print() { // prints all the values in our linked list in order in an array (easiest to print in one line)
         var arr = []; 
         var current = this.head; 
