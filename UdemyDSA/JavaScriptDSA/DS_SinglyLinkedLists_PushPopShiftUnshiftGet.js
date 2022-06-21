@@ -88,6 +88,14 @@ class SinglyLinkedList {
         }
         return current; 
     }
+    set(index, val) {
+        var foundNode = this.get(index); // call it found node and we're just going to check if that returns something valid or not. The get function will either return to us null or the actual node. 
+        if (foundNode) { // if the node is found, update foundNode.val
+            foundNode.val = val; // we need to update foundNode.val equals the values that was passed in here
+            return true; 
+        } 
+        return false; 
+    }
 }
 var list = new SinglyLinkedList()
 list.push("MAKE") // current, counter = 0 // traverse through the linked list
