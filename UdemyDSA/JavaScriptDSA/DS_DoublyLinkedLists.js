@@ -123,6 +123,32 @@ class DoublyLinkedList {
         }
     }
 
+    set(index, val) {
+        var foundNode = this.get(index);
+        if (foundNode != null) {
+            foundNode.val = val; 
+            return true; 
+        } 
+        return false; 
+    }
+
+    insert(index, val) {
+        if (index < 0 || index > this.length) return false; 
+        // if (index === 0) return this.unshift(val); 
+        // if (index === this.length - 1) return this.push(val);
+        // if want the results to return true or false 
+        if (index === 0) return !!this.unshift(val); // coerce it to boolean 
+        if (index === 0) return !!this.push(val); // coerce it to boolean 
+        var newNode = new Node(val);  
+        var beforeNode = this.get(index - 1) // find the item right before the index
+        var afterNode = beforeNode.next; 
+        beforeNode.next = newNode; // place the new node after the before node 
+        newNode.prev = beforeNode; 
+        newNode.next = afterNode; 
+        afterNode.prev = newNode; 
+        this.length++; 
+        return true; // insert successful
+    }
 
 }
 var list = new DoublyLinkedList();
