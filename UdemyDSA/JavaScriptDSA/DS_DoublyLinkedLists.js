@@ -44,17 +44,34 @@ class DoublyLinkedList {
     return this;
   }
   pop() {
-    if (!this.head) return undefined; // this.length === 0 also works 
-    var poppedNode = this.tail; 
-    if (this.length === 1) { // if there is only 1 item
-        this.head = null; 
-        this.tail = null; 
-    } else { // otherwise we need to update the tail
-         this.tail = poppedNode.prev; // set the tail to be the previous node of the poppedNode, node right before the severed node 
-         this.tail.next = null; // the tail's next is now empty, this severs the bond 
-         poppedNode.prev = null; // the old tail's previous is now empty, this severs the previous connect of the poppedNode 
+    if (!this.head) return undefined; // this.length === 0 also works
+    var poppedNode = this.tail;
+    if (this.length === 1) {
+      // if there is only 1 item
+      this.head = null;
+      this.tail = null;
+    } else {
+      // otherwise we need to update the tail
+      this.tail = poppedNode.prev; // set the tail to be the previous node of the poppedNode, node right before the severed node
+      this.tail.next = null; // the tail's next is now empty, this severs the bond
+      poppedNode.prev = null; // the old tail's previous is now empty, this severs the previous connect of the poppedNode
     }
-    this.length--; 
-    return poppedNode; 
+    this.length--;
+    return poppedNode;
+  }
+  shift() {
+    if (this.length === 0) return undefined;
+    var shiftedHead = this.head;
+    if (this.length === 1) {
+      this.head = null; // this is an edge case
+      this.tail = null;
+    } else {
+      this.head = shiftedHead.next; //  new head to node after the node to be shifted, move the head of the list to the node after the shifted node
+      this.head.prev = null; // make sure the list head is the head, there is no node before the head
+      shiftedHead.next = null; // sever the connection between the old head
+    }
+    this.length--;
+    return shiftedHead;
   }
 }
+var list = new DoublyLinkedList();
