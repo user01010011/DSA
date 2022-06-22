@@ -144,11 +144,11 @@ class SinglyLinkedList {
         this.tail = node; 
         var next; 
         var prev = null; // we want previous definitely to be null because we need to make sure that the end of our list, the tail.next is null. (we don't want undefined, etc.)
-        for (var i = 0; i < this.length; i++) {
-            next = node.next; 
-            node.next = prev; 
-            prev = node; 
-            node = next; 
+        for (var i = 0; i < this.length; i++) { // runs based on the length/count of items 
+            next = node.next; // next becomes the next node after the current one
+            node.next = prev; // the old next node becomes prev 
+            prev = node; // prev becomes the old current node
+            node = next; // node becomes the next node 
         }
         return this; 
     }
