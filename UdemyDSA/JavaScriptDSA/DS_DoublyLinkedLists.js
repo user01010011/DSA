@@ -29,7 +29,7 @@ class DoublyLinkedList {
     this.length = 0; // this is it. We've created a Doubly Linked List (empty)
   }
   push(val) {
-    let newNode = new Node(val);
+    var newNode = new Node(val);
     if (this.length === 0) {
       // just another way of checking if the list is empty
       // if (!this.head || !this.tail) OR if (this.head === null || this.tail === null)
@@ -42,5 +42,19 @@ class DoublyLinkedList {
     }
     this.length++;
     return this;
+  }
+  pop() {
+    if (!this.head) return undefined; // this.length === 0 also works 
+    var poppedNode = this.tail; 
+    if (this.length === 1) { // if there is only 1 item
+        this.head = null; 
+        this.tail = null; 
+    } else { // otherwise we need to update the tail
+         this.tail = poppedNode.prev; // set the tail to be the previous node of the poppedNode, node right before the severed node 
+         this.tail.next = null; // the tail's next is now empty, this severs the bond 
+         poppedNode.prev = null; // the old tail's previous is now empty, this severs the previous connect of the poppedNode 
+    }
+    this.length--; 
+    return poppedNode; 
   }
 }
