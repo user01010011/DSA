@@ -59,6 +59,7 @@ class DoublyLinkedList {
     this.length--;
     return poppedNode;
   }
+
   shift() {
     if (this.length === 0) return undefined;
     var shiftedHead = this.head;
@@ -73,5 +74,20 @@ class DoublyLinkedList {
     this.length--;
     return shiftedHead;
   }
+
+  unshift(val) {
+    var newNode = new Node(val); 
+    if (this.length === 0) {
+        this.head = newNode; 
+        this.tail = newNode; 
+    } else {
+        this.head.prev = newNode; // connecting old head to new node  (right to left), newNode left to right to old head
+        newNode.next = this.head; // connecting back new node to old head (left to right)
+        this.head = newNode; // assign newNode to be the head 
+    }
+    this.length++; 
+    return this; // return entire list 
+  }
+
 }
 var list = new DoublyLinkedList();
