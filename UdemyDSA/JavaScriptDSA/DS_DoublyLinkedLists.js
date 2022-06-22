@@ -150,5 +150,23 @@ class DoublyLinkedList {
         return true; // insert successful
     }
 
+    remove(index, val) {
+      if (index < 0 || index >= this.length) return undefined; 
+      if (index === 0) return !!this.shift(val); 
+      if (index === this.length - 1) return !!this.pop(val); 
+      let removedNode = this.get(index); 
+      let beforeNode = removedNode.prev; 
+      let afterNode = removedNode.next; 
+      beforeNode.next = removedNode.next; // jumps over the removed note and make connection with removed note's next node
+      afterNode.prev = removedNode.prev; // jumps over the removed note and make connectoin with removed note's prev node 
+      // can also be written as: 
+      // beforeNode.next = afterNode; 
+      // afterNode.prev = beforeNode; 
+      removedNode.prev = null; 
+      removedNode.next = null;
+      this.length--; 
+      return removedNode; 
+    }
+
 }
 var list = new DoublyLinkedList();
