@@ -168,5 +168,21 @@ class DoublyLinkedList {
       return removedNode; 
     }
 
+    reverse() {
+      let node = this.head; 
+      this.head = this.tail; 
+      this.tail = node; 
+        let nextRev; // next reverse 
+        let prevRev = null; // previous reverse  
+        for (let i = 0; i < this.length; i++) {
+          nextRev = node.next; 
+          node.next = prevRev; 
+          node.prev = nextRev; // reverse the prev pointer for doubly linked list
+          prevRev = node;
+          node = nextRev; 
+        }
+        return this; 
+    }
+
 }
 var list = new DoublyLinkedList();
