@@ -44,7 +44,7 @@ class BinarySearchTree {
     if (this.root === null) return false;
     let current = this.root;
     let found = false;
-    while (current && !found) {
+    while (current && !found) { // can also use contains(value), then change the returns to be true or false 
       if (value < current.value) {
         current = current.left;
       } else if (value > current.value) {
@@ -53,8 +53,10 @@ class BinarySearchTree {
         found = true;
       }
     }
+    if (!found) return undefined; 
     return current;
   }
+
 }
 
 let tree = new BinarySearchTree();
