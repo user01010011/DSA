@@ -20,6 +20,7 @@ class BinarySearchTree {
         } else {
             let current = this.root; 
             while(true) {
+                if (value === current.value) return undefined; // if there is a duplicate 
                 if (value < current.value) {
                     if (current.left === null) {
                         current.left = newNode; 
