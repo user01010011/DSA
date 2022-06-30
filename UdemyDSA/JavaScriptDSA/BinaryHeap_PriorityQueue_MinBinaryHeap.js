@@ -25,6 +25,17 @@ class PriorityQueue {
             idx = parentIdx; 
         }
     }
+
+    dequeue() {
+        const max = this.values[0]; // first store the value of max
+        const end = this.values.pop(); // pop the last item off
+        if (this.values.length > 0) {
+            this.values[0] = end; // put the end node to the top 
+            this.sinkDown(); 
+        }
+        return max; 
+
+    }
 }
 
 class Node {
