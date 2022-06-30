@@ -1,3 +1,7 @@
+// Data Structures 
+
+// Binary Heap - Max Binary Heap
+
 class MaxBinaryHeap {
     constructor() {
         // this.values = [41, 39, 33, 18, 27, 12]; 
@@ -62,3 +66,8 @@ class MaxBinaryHeap {
         }
     }
 }
+
+let heap = new MaxBinaryHeap(); 
+heap.insert(55)
+// [41,39,33,18,27,12,55]
+//  0  1  2  3  4  5  6        
