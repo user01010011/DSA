@@ -43,7 +43,10 @@ class HashTable {
     
     set(key, value) {
         let index = this._hash(key); 
-        return index; 
+        if (!this.keyMap[index]) {
+            this.keyMap[index] = []; 
+        }
+        this.keyMap[index].push([key, value]); 
     }
     
     get(key) {
